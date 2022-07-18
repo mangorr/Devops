@@ -1,1 +1,2 @@
-curl publicip:port /pet
+curl publicip:port/pets
+curl -s publicip:port/pets
