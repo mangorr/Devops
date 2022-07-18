@@ -2,3 +2,6 @@ curl publicip:port/pets
 curl -s publicip:port/pets
 
 devp, produc
+
+ibmcloud cr images
+ic cr image-rm name:tag
