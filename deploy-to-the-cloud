@@ -5,3 +5,9 @@ devp, produc
 
 ibmcloud cr images
 ic cr image-rm name:tag
+
+
+
+Q & A :
+ibmcloud doesn't installed
+docker doesn't installed
