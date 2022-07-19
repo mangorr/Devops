@@ -6,6 +6,8 @@ devp, produc
 ibmcloud cr images
 ic cr image-rm name:tag
 
+pod nodes not ready : kubectl describe pods orders-77885bc54c-ckf9r
+
 
 
 Q & A :
