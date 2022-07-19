@@ -11,3 +11,6 @@ ic cr image-rm name:tag
 Q & A :
 ibmcloud doesn't installed
 docker doesn't installed : ibmcloud cr login, sudo curl -sSL https://get.docker.com/ | sh -->solved
+
+when push images, scope denied:change namespace as the new one created before.
+
