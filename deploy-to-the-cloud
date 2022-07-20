@@ -18,6 +18,7 @@ visit:159.122.174.70:31000
 
 namespace:
 kubectl get namespace
+kubectl apply -f deploy/postgresql.yaml -n=dev
 
 
 
