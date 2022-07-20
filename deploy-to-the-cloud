@@ -30,3 +30,6 @@ when push images, scope denied:change namespace as the new one created before.
 
 Warning  Unhealthy  16s (x11 over 3m46s)  kubelet            Readiness probe failed: HTTP probe failed with statuscode: 404: no response with "get" or path is not correct. 
 The reason is no response to "health". Delete readiness and run again.
+
+change:
+postgresql.yaml: 31032->31042
