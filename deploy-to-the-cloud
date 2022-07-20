@@ -16,6 +16,9 @@ ID                                                     Public IP        Private 
 kube-cbasr26f0j1vn6j31kog-nyudevops-default-000000af   159.122.174.70   10.144.216.178   free     normal   Ready    mil01   1.23.8_1535* 
 visit:159.122.174.70:31000
 
+namespace:
+kubectl get namespace
+
 
 
 Q & A :
