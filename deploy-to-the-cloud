@@ -10,6 +10,12 @@ pod nodes not ready : kubectl describe pods orders-77885bc54c-ckf9r
 
 ibmcloud cr namespace-rm yachiru
 
+vscode@nyu:/app$ ibmcloud ks workers --cluster nyu-devops
+OK
+ID                                                     Public IP        Private IP       Flavor   State    Status   Zone    Version   
+kube-cbasr26f0j1vn6j31kog-nyudevops-default-000000af   159.122.174.70   10.144.216.178   free     normal   Ready    mil01   1.23.8_1535* 
+visit:159.122.174.70:31000
+
 
 
 Q & A :
