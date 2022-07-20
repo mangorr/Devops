@@ -20,6 +20,8 @@ namespace:
 kubectl get namespace
 kubectl apply -f deploy/postgresql.yaml -n=dev
 
+kubectl delete service
+
 
 
 Q & A :
