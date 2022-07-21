@@ -67,4 +67,31 @@ NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 service/kubernetes   ClusterIP   172.21.0.1   <none>        443/TCP   5h41m
 ```
 
+Create new namespace "dev" amd "prod":
+```
+vscode@nyu:/app/deploy$ kubectl create namespace dev
+namespace/dev created
+vscode@nyu:/app/deploy$ kubectl create namespace prod
+namespace/prod created
+```
+
+Check namespace in kubernetes:
+```
+vscode@nyu:/app/deploy$ kubectl get namespace
+NAME              STATUS   AGE
+default           Active   2d4h
+dev               Active   63s
+ibm-cert-store    Active   2d3h
+ibm-operators     Active   2d4h
+ibm-system        Active   2d4h
+kube-node-lease   Active   2d4h
+kube-public       Active   2d4h
+kube-system       Active   2d4h
+prod              Active   8h
+```
+
+
+
+
+
 
