@@ -51,8 +51,20 @@ cc3de6b21a41: Pushed
 
 Use ibmcloud cr images to list the IBM Cloud images
 ```
-vscode@nyu:/app$ docker images
-REPOSITORY                 TAG       IMAGE ID       CREATED              SIZE
-us.icr.io/yachiru/orders   1.0       62e2b26c2586   About a minute ago   390MB
+vscode@nyu:/app$ ibmcloud cr images
+Listing images...
+
+Repository                 Tag   Digest         Namespace   Created         Size     Security status   
+us.icr.io/yachiru/orders   1.0   9191488a9482   yachiru     2 minutes ago   151 MB   No Issues   
+
+OK
 ```
+
+Use the kubectl get all command to see what is running in the **default** namespace
+```
+vscode@nyu:/app$ kubectl get all
+NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   172.21.0.1   <none>        443/TCP   5h41m
+```
+
 
