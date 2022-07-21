@@ -1,14 +1,3 @@
-Before start docker container, reset environment:
-```
-$ docker ps
-CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
-```
-
-```
-docker system prune -f
-docker volume prune -f
-```
-
 Start vscode and reopen in container
 
 ```
@@ -248,6 +237,18 @@ picture 2
 
 
 
+
+
+If there is issue when loggin, try to reset docker environment:
+```
+$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
+
+```
+docker system prune -f
+docker volume prune -f
+```
 
 
 
