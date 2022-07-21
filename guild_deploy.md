@@ -19,8 +19,40 @@ Create new IBM Cloud namespace
 ```
 vscode@nyu:/app$ ibmcloud cr namespace-add yachiru
 ```
-Export to new namespace and build
+Export to new namespace and build // takes some time
 ```
 vscode@nyu:/app$ export NAMESPACE=yachiru
 vscode@nyu:/app$ make build
 ```
+Use docker images to list the local images
+```
+vscode@nyu:/app$ docker images
+REPOSITORY                 TAG       IMAGE ID       CREATED          SIZE
+us.icr.io/yachiru/orders   1.0       62e2b26c2586   30 seconds ago   390MB
+```
+
+Use docker push to send to IBM Cloud Container Registry
+```
+vscode@nyu:/app$ docker push us.icr.io/yachiru/orders:1.0
+The push refers to repository [us.icr.io/yachiru/orders]
+bc151fe41219: Pushed 
+44925dcc104e: Pushed 
+9f267d2dedd6: Pushed 
+9bbcb61a1092: Pushed 
+a594c80eb584: Pushed 
+9de0365805f7: Pushed 
+755710f34a21: Pushed 
+83aed24cdd2b: Pushed 
+cc3de6b21a41: Pushed 
+0255573f4829: Pushed 
+43b3c4e3001c: Pushed 
+1.0: digest: sha256:9191488a9482b431f503923e877d6855f88813618b533d0ac950a7776cf53538 size: 2626
+```
+
+Use ibmcloud cr images to list the IBM Cloud images
+```
+vscode@nyu:/app$ docker images
+REPOSITORY                 TAG       IMAGE ID       CREATED              SIZE
+us.icr.io/yachiru/orders   1.0       62e2b26c2586   About a minute ago   390MB
+```
+
