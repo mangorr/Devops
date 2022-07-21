@@ -130,5 +130,23 @@ type: kubernetes.io/dockerconfigjson
 
 ```
 
+Update new configure:
+```
+vscode@nyu:/app/deploy$ kc create -f icr.yaml
+secret/all-icr-io created
+```
+
+Check authority of "dev":
+```
+vscode@nyu:/app/deploy$ kc get secret -n dev
+NAME                  TYPE                                  DATA   AGE
+all-icr-io            kubernetes.io/dockerconfigjson        1      43s
+default-token-9ljvx   kubernetes.io/service-account-token   3      7m39s
+```
+
+
+
+
+
 
 
