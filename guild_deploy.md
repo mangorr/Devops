@@ -144,6 +144,108 @@ all-icr-io            kubernetes.io/dockerconfigjson        1      43s
 default-token-9ljvx   kubernetes.io/service-account-token   3      7m39s
 ```
 
+The same for "prod". Then just delete .yaml
+```
+vscode@nyu:/app/deploy$ rm icr.yaml
+```
+
+Apply relevent yaml files and check status of server, pods etc..
+```
+vscode@nyu:/app/deploy$ kubectl apply -f dev_postgresql.yaml 
+statefulset.apps/postgres created
+service/postgres created
+secret/postgres-creds created
+```
+
+```
+vscode@nyu:/app/deploy$ kubectl get all -n dev
+NAME             READY   STATUS    RESTARTS   AGE
+pod/postgres-0   1/1     Running   0          45s
+
+NAME               TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/postgres   NodePort   172.21.123.88   <none>        5432:31032/TCP   45s
+
+NAME                        READY   AGE
+statefulset.apps/postgres   1/1     47s
+```
+
+```
+vscode@nyu:/app/deploy$ kubectl create -f dev_deployment.yaml 
+deployment.apps/orders created
+```
+
+```
+vscode@nyu:/app/deploy$ kubectl get all -l app=orders -n dev
+NAME                          READY   STATUS    RESTARTS   AGE
+pod/orders-7584588978-222x5   1/1     Running   0          45s
+pod/orders-7584588978-zzkwp   1/1     Running   0          45s
+
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/orders   2/2     2            2           46s
+
+NAME                                DESIRED   CURRENT   READY   AGE
+replicaset.apps/orders-7584588978   2         2         2       46s
+```
+
+```
+vscode@nyu:/app/deploy$ kubectl logs orders-7584588978-222x5 -n dev
+[2022-07-21 01:48:47 +0000] [1] [INFO] Starting gunicorn 20.1.0
+[2022-07-21 01:48:47 +0000] [1] [INFO] Listening at: http://0.0.0.0:8080 (1)
+[2022-07-21 01:48:47 +0000] [1] [INFO] Using worker: sync
+[2022-07-21 01:48:48 +0000] [7] [INFO] Booting worker with pid: 7
+[2022-07-21 01:48:53 +0000] [INFO] [log_handlers] Logging handler established
+[2022-07-21 01:48:53 +0000] [INFO] [__init__] **********************************************************************
+[2022-07-21 01:48:53 +0000] [INFO] [__init__] ************* O R D E R   S E R V I C E   R U N N I N G  *************
+[2022-07-21 01:48:53 +0000] [INFO] [__init__] **********************************************************************
+[2022-07-21 01:48:54 +0000] [INFO] [__init__] Service initialized!
+```
+
+Deploy the service:
+```
+vscode@nyu:/app/deploy$ kubectl create -f dev_service.yaml 
+service/orders created
+```
+
+```
+vscode@nyu:/app/deploy$ kubectl get service -n dev
+NAME       TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+orders     NodePort   172.21.122.11   <none>        8080:31001/TCP   22s
+postgres   NodePort   172.21.123.88   <none>        5432:31032/TCP   4m36s
+```
+
+Check all status:
+```
+vscode@nyu:/app/deploy$ vscode@nyu:/app/deploy$ kubectl get all -n dev
+NAME                          READY   STATUS    RESTARTS   AGE
+pod/orders-7584588978-222x5   1/1     Running   0          4m16s
+pod/orders-7584588978-zzkwp   1/1     Running   0          4m16s
+pod/postgres-0                1/1     Running   0          5m56s
+
+NAME               TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+service/orders     NodePort   172.21.122.11   <none>        8080:31001/TCP   103s
+service/postgres   NodePort   172.21.123.88   <none>        5432:31032/TCP   5m57s
+
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/orders   2/2     2            2           4m17s
+
+NAME                                DESIRED   CURRENT   READY   AGE
+replicaset.apps/orders-7584588978   2         2         2       4m17s
+```
+
+Get pod IP address:
+```
+vscode@nyu:/app/deploy$ ibmcloud ks workers --cluster nyu-devops
+OK
+ID                                                     Public IP        Private IP       Flavor   State    Status   Zone    Version   
+kube-cbasr26f0j1vn6j31kog-nyudevops-default-000000af   159.122.174.70   10.144.216.178   free     normal   Ready    mil01   1.23.8_1535*   
+
+* To update to 1.23.8_1537 version, run 'ibmcloud ks worker update'. Review and make any required version changes before you update: 'https://ibm.biz/upworker'
+```
+
+Visit ip:port:
+picture 1
+picture 2
+
 
 
 
