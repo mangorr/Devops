@@ -12,7 +12,7 @@ docker volume prune -f
 Start vscode and reopen in container
 
 ```
-make login
+vscode@nyu:/app$ make login
 ```
 
 Create new IBM Cloud namespace
