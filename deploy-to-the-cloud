@@ -24,7 +24,7 @@ kubectl delete namespace dev
 kubectl delete service orders
 
 kubectl delete --all services -n dev
-
+kubectl get services -n dev
 
 
 Q & A :
