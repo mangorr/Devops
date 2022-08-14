@@ -22,6 +22,7 @@ kubectl apply -f deploy/postgresql.yaml -n=dev
 kubectl delete namespace dev
 
 kubectl delete service orders
+kubectl delete deployment name -n dev
 
 kubectl delete --all services -n dev
 kubectl get services -n dev
