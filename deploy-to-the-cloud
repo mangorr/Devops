@@ -30,6 +30,8 @@ kubectl get services -n dev
 kubectl get all -l app=orders -n dev
 kubectl logs orders-57d9c47cdc-fpqsf -n dev
 
+kubectl exec -n dev -it postgres-0 -- /bin/bash
+
 
 Q & A :
 ibmcloud doesn't installed
