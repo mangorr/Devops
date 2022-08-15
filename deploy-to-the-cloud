@@ -27,6 +27,9 @@ kubectl delete deployment name -n dev
 kubectl delete --all services -n dev
 kubectl get services -n dev
 
+kubectl get all -l app=orders -n dev
+kubectl logs orders-57d9c47cdc-fpqsf -n dev
+
 
 Q & A :
 ibmcloud doesn't installed
